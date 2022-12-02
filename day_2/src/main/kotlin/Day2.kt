@@ -19,26 +19,30 @@ class Day2 {
         // Y paper
         // Z scissors
 
+        // X lose
+        // Y tie
+        // Z win
+
         return input.split("\n").mapNotNull { outer ->
             val items = outer.split(" ")
             if (items[0] == "A" && items[1] == "Y") {
-                win + values[items[1]]!!
+                tie + values["X"]!!
             } else if (items[0] == "A" && items[1] == "Z") {
-                loss + values[items[1]]!!
+                win + values["Y"]!!
             } else if (items[0] == "A" && items[1] == "X") {
-                tie + values[items[1]]!!
+                loss + values["Z"]!!
             } else if (items[0] == "B" && items[1] == "X") {
-                loss + values[items[1]]!!
+                loss + values["X"]!!
             } else if (items[0] == "B" && items[1] == "Y") {
-                tie + values[items[1]]!!
+                tie + values["Y"]!!
             } else if (items[0] == "B" && items[1] == "Z") {
-                win + values[items[1]]!!
+                win + values["Z"]!!
             } else if (items[0] == "C" && items[1] == "X") {
-                win + values[items[1]]!!
+                loss + values["Y"]!!
             } else if (items[0] == "C" && items[1] == "Y") {
-                loss + values[items[1]]!!
+                tie + values["Z"]!!
             } else if (items[0] == "C" && items[1] == "Z") {
-                tie + values[items[1]]!!
+                win + values["X"]!!
             } else {
                 0
             }
