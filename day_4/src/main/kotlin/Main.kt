@@ -8,7 +8,9 @@ class Main {
 
             println("${values[0]} ${values[1]} ${values[2]} ${values[3]} ")
             if ((values[0].toInt() <= values[2].toInt() && values[1].toInt() >= values[3].toInt()) ||
-                (values[0].toInt() >= values[2].toInt() && values[1].toInt() <= values[3].toInt())) {
+                (values[0].toInt() >= values[2].toInt() && values[1].toInt() <= values[3].toInt()) ||
+                (values[0].toInt() <= values[2].toInt() && values[1].toInt() >= values[2].toInt()) ||
+                (values[0].toInt() >= values[2].toInt() && values[1].toInt() >= values[3].toInt() && values[0].toInt() <= values[3].toInt())) {
                 println("count it! $index")
                 acc += 1
             }
