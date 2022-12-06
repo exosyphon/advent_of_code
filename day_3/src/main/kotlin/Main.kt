@@ -4,7 +4,6 @@ class Main {
 
         val parsedInput = input.split("\n")
 
-//        input.split("\n").map {  }
         val lookup = mapOf(
             'a' to 1,
             'b' to 2,
@@ -60,23 +59,32 @@ class Main {
             'Z' to 52,
         )
         val sums = mutableListOf<Int>()
-        for (i in parsedInput) {
+        var iter = 0
+        while (iter < parsedInput.size) {
+            var firstLine = parsedInput[iter]
+            var secondLine = parsedInput[iter + 1]
+            var thirdLine = parsedInput[iter + 2]
             var halt = false
             var j = 0
-            while (j < i.length.div(2) && !halt) {
-                var k = i.length.div(2)
-                while (k < i.length) {
-                    if (i[j] == i[k]) {
-                        println("comparing ${i[j]} at $j and ${i[k]} at $k")
-                        println("adding ${i[j]} for $i which is ${lookup[i[j]]}")
-                        sums.add(lookup[i[j]]!!)
-                        halt = true
-                        break
+            while (j < firstLine.length && !halt) {
+                var k = 0
+                while (k < secondLine.length && !halt) {
+                    var l = 0
+                    while (l < thirdLine.length && !halt) {
+                        if (firstLine[j] == secondLine[k] && firstLine[j] == thirdLine[l]) {
+                            println("comparing ${firstLine[j]} at $j and ${secondLine[k]} at $k and ${thirdLine[l]} at $l")
+                            println("adding ${firstLine[j]} which is ${lookup[firstLine[j]]}")
+                            sums.add(lookup[firstLine[j]]!!)
+                            halt = true
+                            break
+                        }
+                        l++
                     }
                     k++
                 }
                 j++
             }
+            iter += 3
         }
 
         return sums.sum()
