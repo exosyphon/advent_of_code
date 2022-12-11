@@ -1,0 +1,19 @@
+$ cd /
+$ ls
+dir bob
+$ cd bob
+$ ls
+dir fred
+dir tom
+1000 a
+$ cd fred
+$ ls
+dir andrew
+1000 a
+$ cd andrew
+$ ls
+1000 b
+$ cd ..
+$ cd tom
+$ ls
+1000 a
