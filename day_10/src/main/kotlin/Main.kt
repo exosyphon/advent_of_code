@@ -1,5 +1,5 @@
 class Main {
-    fun exec(): Int {
+    fun part2() {
         val input = this::class.java.getResource("input.txt").readText().trim().split("\n")
 
         var registerX = mutableListOf<Cycle>()
@@ -27,9 +27,48 @@ class Main {
                 }
             }
         }
-//        for ((index, thing) in registerX.withIndex()) {
-//            println("$index, $thing")
-//        }
+
+        for ((index, x) in registerX.withIndex()) {
+            if (index.mod(40) == 0) {
+                println()
+            }
+
+            if (x.during >= index.mod(40) - 1 && x.during <= index.mod(40) + 1) {
+                print("#")
+            } else {
+                print(".")
+            }
+        }
+    }
+
+    fun part1(): Int {
+        val input = this::class.java.getResource("input.txt").readText().trim().split("\n")
+
+        var registerX = mutableListOf<Cycle>()
+        for ((index, instruction) in input.withIndex()) {
+            if (index == 0) {
+                if (instruction.startsWith("noop")) {
+                    registerX.add(Cycle(1, 1))
+                } else {
+                    registerX.add(Cycle(1, 1))
+                    val incrementAmount = instruction.trim().split(" ")[1].toInt()
+                    registerX.add(Cycle(1, 1 + incrementAmount))
+                }
+            } else {
+                if (instruction.startsWith("noop")) {
+                    registerX.add(Cycle(registerX[registerX.size - 1].after, registerX[registerX.size - 1].after))
+                } else {
+                    registerX.add(Cycle(registerX[registerX.size - 1].after, registerX[registerX.size - 1].after))
+                    val incrementAmount = instruction.trim().split(" ")[1].toInt()
+                    registerX.add(
+                        Cycle(
+                            registerX[registerX.size - 1].after,
+                            registerX[registerX.size - 1].after + incrementAmount
+                        )
+                    )
+                }
+            }
+        }
 
         return sumInterestingRegisters(registerX)
     }
@@ -44,5 +83,6 @@ class Main {
 data class Cycle(val during: Int, val after: Int)
 
 fun main() {
-    println(Main().exec())
+    println(Main().part1())
+    Main().part2()
 }
