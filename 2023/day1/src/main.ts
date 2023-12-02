@@ -5,7 +5,7 @@ export class Main {
     let sum = 0
 
     const allFileContents = fs.readFileSync("./src/input.txt", "utf-8")
-    allFileContents.split(/\r?\n/).forEach((line: string) => {
+    allFileContents.split("\n").forEach((line: string) => {
       if (line.length > 0) {
         if (part2) {
           sum = sum + this.improvedCalibrations(line)
