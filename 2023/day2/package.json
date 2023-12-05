@@ -1,6 +1,6 @@
 {
-  "name": "y",
-  "module": "y",
+  "name": "day2",
+  "module": "day2",
   "type": "module",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.13.1",
